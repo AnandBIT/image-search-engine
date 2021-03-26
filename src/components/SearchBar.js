@@ -14,8 +14,9 @@ class SearchBar extends React.Component {
 
 	onFormSubmit(e) {
 		e.preventDefault();
-		console.log(this);
-		console.log(this.state.term);
+		this.props.onSubmitRequest(this.state.term);
+		// console.log(this);
+		// console.log(this.state.term);
 	}
 
 	// onFormSubmit = (e) => {
@@ -46,6 +47,7 @@ class SearchBar extends React.Component {
 									term: e.target.value,
 								});
 							}}
+							autoComplete='off'
 						/>
 					</div>
 				</form>
