@@ -1,0 +1,20 @@
+.image-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	column-gap: 10px;
+	/* grid-auto-rows: 10px; */
+}
+
+.image-list > div:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+.image-list > div {
+	border-radius: 10px;
+}
+
+.image-list > div img {
+	width: 100%;
+	display: block;
+	border-radius: 10px;
+}
