@@ -2,6 +2,7 @@ import React from 'react';
 import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 import ImageList from './ImageList';
+import './App.css';
 
 let count = 0,
 	userTerm,
@@ -16,7 +17,7 @@ class App extends React.Component {
 			const response = await unsplash.get('/search/photos', {
 				params: {
 					query: userTerm,
-					per_page: 30,
+					per_page: 15,
 					page: nextPage,
 				},
 			});
@@ -30,7 +31,10 @@ class App extends React.Component {
 	render() {
 		console.log(++count);
 		return (
-			<div className='ui container' style={{ marginTop: '1rem', textAlign: 'center' }}>
+			<div
+				className='ui container'
+				style={{ marginTop: '1rem', textAlign: 'center' }}
+			>
 				<SearchBar onSubmitRequest={(e, n) => this.onSearchSubmit(e, n)} />
 				<ImageList images={this.state.images} />
 				<button
@@ -38,14 +42,7 @@ class App extends React.Component {
 						nextPage++;
 						this.onSearchSubmit(userTerm, nextPage);
 					}}
-					style={{
-						margin: '1rem',
-						padding: '1rem 2rem',
-						fontSize: '1.5rem',
-						borderRadius: '5px',
-						outline: 'none',
-						cursor: 'pointer',
-					}}
+					className='btn'
 				>
 					Next Page
 				</button>

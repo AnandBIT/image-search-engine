@@ -1,0 +1,28 @@
+.btn {
+	padding: 1rem 2rem;
+	margin: 2rem;
+	font-size: 18px;
+	border-radius: 10px;
+	color: rgb(41, 39, 39);
+	border-style: none;
+	border: 1px solid transparent;
+	background: #e0e5ec;
+	cursor: pointer;
+	box-shadow: inset -10px 11px 20px 0px #fff, inset -2px 0px 11px #a3b1c6;
+	transition: all 0.5s;
+}
+
+.btn:active,
+.btn:hover {
+	outline: none;
+	box-shadow: inset 2px 3px 4px 0px #b7b9bb, inset 0px 1px 1px 1px #dddada;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.btn:focus {
+	outline: none;
+}
+
+body {
+	background: #e0e5ec;
+}
