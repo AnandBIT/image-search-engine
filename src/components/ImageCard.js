@@ -1,4 +1,6 @@
 import React from 'react';
+import loader from '../giphy.gif';
+import { FiExternalLink } from 'react-icons/fi';
 
 class ImageCard extends React.Component {
 	constructor(props) {
@@ -7,11 +9,15 @@ class ImageCard extends React.Component {
 		this.imageRef = React.createRef();
 	}
 
-	componentDidMount() {
-		// console.log(this.imageRef);
-		// console.log(this.imageRef.current);
-		this.imageRef.current.addEventListener('load', this.setSpans);
-	}
+	setImgSrc = () => {
+		const {
+			urls: { thumb },
+			alt_description,
+		} = this.props.image;
+
+		this.imageRef.current.src = thumb;
+		this.imageRef.current.alt = alt_description;
+	};
 
 	setSpans = () => {
 		const height = this.imageRef.current.clientHeight;
@@ -19,14 +25,38 @@ class ImageCard extends React.Component {
 		this.setState({ spans: spans });
 	};
 
+	componentDidMount() {
+		// console.log(this.imageRef);
+		// console.log(this.imageRef.current);
+
+		this.imageRef.current.addEventListener('load', this.setImgSrc);
+		this.imageRef.current.addEventListener('load', this.setSpans);
+	}
+
+	componentWillUnmount() {
+		this.imageRef.current.removeEventListener('load', this.setImgSrc);
+		this.imageRef.current.removeEventListener('load', this.setSpans);
+	}
+
 	render() {
-		const {
-			urls: { small },
-			alt_description,
-		} = this.props.image;
 		return (
-			<div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-				<img ref={this.imageRef} src={small} alt={alt_description} />
+			<div
+				style={{ gridRowEnd: `span ${this.state.spans}` }}
+				className='image__card'
+			>
+				<img ref={this.imageRef} src={loader} alt='Loader' />
+				<a
+					href={this.props.image.links.download}
+					target='_blank'
+					rel='noreferrer noopener'
+					className='image__card-description'
+				>
+					<FiExternalLink
+						color='#fff'
+						className='image__card-dldIcon'
+						title='See original image'
+					/>
+				</a>
 			</div>
 		);
 	}

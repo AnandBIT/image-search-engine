@@ -12,28 +12,35 @@ class SearchBar extends React.Component {
 		term: '',
 	};
 
-	onFormSubmit(e) {
+	// onFormSubmit(e) {
+	// 	e.preventDefault();
+	// 	this.props.onSubmitRequest(this.state.term, 1);
+	// 	console.log(this);
+	// 	// console.log(this.state.term);
+	// }
+
+	onFormSubmit = (e) => {
 		e.preventDefault();
 		this.props.onSubmitRequest(this.state.term, 1);
 		// console.log(this);
-		console.log(this.state.term);
-	}
-
-	// onFormSubmit = (e) => {
-	// 	console.log(this);
-	// 	e.preventDefault();
-	// 	// console.log(this.state.term);
-	// };
+		// console.log(this.state.term);
+	};
 
 	render() {
 		return (
 			<div className='ui segment'>
 				<form
 					className='ui form'
-					onSubmit={(event) => {
-						this.onFormSubmit(event);
-					}}
-					// onSubmit={this.onFormSubmit}
+					onSubmit={this.onFormSubmit}
+
+					// onSubmit={(event) => {
+					// 	this.onFormSubmit(event);
+					// }}
+
+					// onSubmit={function (e) {
+					// 	e.preventDefault();
+					// 	console.log(this);
+					// }}
 				>
 					<div className='field'>
 						<label htmlFor='searchBox'>Image Search</label>
@@ -48,6 +55,7 @@ class SearchBar extends React.Component {
 								});
 							}}
 							autoComplete='off'
+							required
 						/>
 					</div>
 				</form>

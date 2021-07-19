@@ -2,23 +2,21 @@ import React from 'react';
 import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 import ImageList from './ImageList';
-import './App.css';
 
-let count = 0,
-	userTerm,
-	nextPage = 1;
+let userTerm = '',
+	currentPageNumber = 1;
 
 class App extends React.Component {
 	state = { images: [] };
-	async onSearchSubmit(term, n) {
+	onSearchSubmit = async (term, pageNumber) => {
 		try {
 			userTerm = term;
-			nextPage = n;
+			currentPageNumber = pageNumber;
 			const response = await unsplash.get('/search/photos', {
 				params: {
 					query: userTerm,
-					per_page: 15,
-					page: nextPage,
+					per_page: 20,
+					page: pageNumber,
 				},
 			});
 			// console.log(this);
@@ -26,21 +24,36 @@ class App extends React.Component {
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	render() {
-		console.log(++count);
+		// console.log(++count);
 		return (
 			<div
 				className='ui container'
 				style={{ marginTop: '1rem', textAlign: 'center' }}
 			>
-				<SearchBar onSubmitRequest={(e, n) => this.onSearchSubmit(e, n)} />
+				<SearchBar
+					// onSubmitRequest={(e, pageNumber) => {
+					// 	this.onSearchSubmit(e, pageNumber);
+					// }}
+
+					// onSubmitRequest={function (e, pageNumber) {
+					// 	console.log(this);
+					// 	// this.onSearchSubmit(e, pageNumber);
+					// }}
+
+					onSubmitRequest={this.onSearchSubmit}
+					// guessWhoIAm='I am the props object'
+				/>
 				<ImageList images={this.state.images} />
 				<button
 					onClick={() => {
-						nextPage++;
-						this.onSearchSubmit(userTerm, nextPage);
+						if (userTerm) {
+							currentPageNumber++;
+							this.onSearchSubmit(userTerm, currentPageNumber);
+							window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+						}
 					}}
 					className='btn'
 				>
