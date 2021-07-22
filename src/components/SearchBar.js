@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 class SearchBar extends React.Component {
 	// constructor(props) {
@@ -28,7 +28,7 @@ class SearchBar extends React.Component {
 
 	render() {
 		return (
-			<div className='ui segment'>
+			<Fragment>
 				<form
 					className='ui form'
 					onSubmit={this.onFormSubmit}
@@ -42,24 +42,25 @@ class SearchBar extends React.Component {
 					// 	console.log(this);
 					// }}
 				>
-					<div className='field'>
-						<label htmlFor='searchBox'>Image Search</label>
-						<input
-							type='text'
-							value={this.state.term}
-							id='searchBox'
-							onChange={(e) => {
-								// console.log(this);
-								this.setState({
-									term: e.target.value,
-								});
-							}}
-							autoComplete='off'
-							required
-						/>
-					</div>
+					<input
+						type='text'
+						value={this.state.term}
+						id='searchBox'
+						onChange={(e) => {
+							// console.log(this);
+							this.setState({
+								term: e.target.value,
+							});
+						}}
+						autoComplete='off'
+						placeholder='Image Search'
+						required
+					/>
+					<button type='submit' className='btn btn-submit'>
+						Search
+					</button>
 				</form>
-			</div>
+			</Fragment>
 		);
 	}
 }

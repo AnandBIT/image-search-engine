@@ -3,6 +3,10 @@ import ImageCard from './ImageCard';
 
 const ImageList = ({ images }) => {
 	// console.log(images);
+	if (images.length === 0) {
+		return <h2 style={{ color: 'red' }}>No results found!</h2>;
+	}
+
 	return (
 		<div className='image-list'>
 			{/* We should assign an unique key property to the root tag we are returning inside the map statement */}
@@ -10,7 +14,7 @@ const ImageList = ({ images }) => {
 				return <ImageCard image={image} key={image.id} />;
 			})}
 		</div>
-	);
+	);	
 };
 
 export default ImageList;
