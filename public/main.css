@@ -45,7 +45,7 @@ input {
   padding: 1.5rem;
   background: #e0e5ec;
   border: none;
-  border-radius: 20px;
+  border-radius: 3rem;
   font-size: 1.8rem;
   outline: none;
   width: 100%;
@@ -174,3 +174,4 @@ input:focus {
     transform: rotate(360deg);
   }
 }
+/*# sourceMappingURL=main.css.map */
