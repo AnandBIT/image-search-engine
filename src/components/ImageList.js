@@ -14,7 +14,7 @@ const ImageList = ({ images }) => {
 				return <ImageCard image={image} key={image.id} />;
 			})}
 		</div>
-	);	
+	);
 };
 
 export default ImageList;
