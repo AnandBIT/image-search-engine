@@ -31,7 +31,9 @@ class ImageCard extends React.Component {
 		// console.log(this.imageRef);
 		// console.log(this.imageRef.current);
 
-		this.imageRef.current.addEventListener('load', this.setImgSrc);
+		this.imageRef.current.addEventListener('load', this.setImgSrc, {
+			once: true,
+		});
 		this.imageRef.current.addEventListener('load', this.setSpans);
 	}
 
