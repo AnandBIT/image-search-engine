@@ -21,7 +21,6 @@ class ImageCard extends React.Component {
 
 	setSpans = () => {
 		const height = this.imageRef.current.clientHeight;
-		// console.log(height);
 
 		// Adding 2 so that there is 2*4 = 8px more space to behave as margin-bottom
 		const spans = Math.ceil(height / 4) + 2;
@@ -29,9 +28,6 @@ class ImageCard extends React.Component {
 	};
 
 	componentDidMount() {
-		// console.log(this.imageRef);
-		// console.log(this.imageRef.current);
-
 		this.imageRef.current.addEventListener('load', this.setImgSrc, {
 			once: true,
 		});

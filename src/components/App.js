@@ -4,7 +4,6 @@ import SearchBar from './SearchBar';
 import ImageList from './ImageList';
 
 let userTerm = '',
-	// count = 0,
 	currentPageNumber = 1;
 
 class App extends React.Component {
@@ -36,7 +35,6 @@ class App extends React.Component {
 					page: pageNumber,
 				},
 			});
-			// console.log(this);
 			this.setState({
 				images: response.data.results,
 				isNextBtnVisible: response.data.results.length === 0 ? false : true,
@@ -46,7 +44,7 @@ class App extends React.Component {
 				},
 			});
 		} catch (err) {
-			// console.error(err.response);
+			console.error(err.response);
 			this.setState({
 				isContentReady: {
 					status: false,
@@ -92,22 +90,9 @@ class App extends React.Component {
 	}
 
 	render() {
-		// console.log(++count);
 		return (
 			<div className='container' style={{ marginTop: '1rem', textAlign: 'center' }}>
-				<SearchBar
-					// onSubmitRequest={(e, pageNumber) => {
-					// 	this.onSearchSubmit(e, pageNumber);
-					// }}
-
-					// onSubmitRequest={function (e, pageNumber) {
-					// 	console.log(this);
-					// 	// this.onSearchSubmit(e, pageNumber);
-					// }}
-
-					onSubmitRequest={this.onSearchSubmit}
-					// guessWhoIAm='I am the props object'
-				/>
+				<SearchBar onSubmitRequest={this.onSearchSubmit} />
 				{this.renderedContent()}
 			</div>
 		);
