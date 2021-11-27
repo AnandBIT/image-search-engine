@@ -18,7 +18,9 @@ class App extends React.Component {
 	};
 	onSearchSubmit = async (term, pageNumber) => {
 		try {
+			// Resetting state and showing a loader, each time a new search call is made
 			this.setState({
+				images: [],
 				isNextBtnVisible: false,
 				isContentReady: {
 					status: false,
@@ -44,7 +46,7 @@ class App extends React.Component {
 				},
 			});
 		} catch (err) {
-			// console.log(err.response);
+			// console.error(err.response);
 			this.setState({
 				isContentReady: {
 					status: false,
@@ -64,6 +66,7 @@ class App extends React.Component {
 	};
 
 	renderedContent() {
+		// if there is no content to show, show a loader or nothing depending upon search request
 		if (!this.state.isContentReady.status) {
 			return this.state.isContentReady.content;
 		}
@@ -91,10 +94,7 @@ class App extends React.Component {
 	render() {
 		// console.log(++count);
 		return (
-			<div
-				className='container'
-				style={{ marginTop: '1rem', textAlign: 'center' }}
-			>
+			<div className='container' style={{ marginTop: '1rem', textAlign: 'center' }}>
 				<SearchBar
 					// onSubmitRequest={(e, pageNumber) => {
 					// 	this.onSearchSubmit(e, pageNumber);

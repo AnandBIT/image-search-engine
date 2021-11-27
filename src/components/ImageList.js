@@ -4,7 +4,7 @@ import ImageCard from './ImageCard';
 const ImageList = ({ images }) => {
 	// console.log(images);
 	if (images.length === 0) {
-		return <h2 style={{ color: 'red' }}>No results found!</h2>;
+		return <h2 style={{ color: 'red' }}>No images found!</h2>;
 	}
 
 	return (

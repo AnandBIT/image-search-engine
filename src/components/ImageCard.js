@@ -44,11 +44,8 @@ class ImageCard extends React.Component {
 
 	render() {
 		return (
-			<div
-				style={{ gridRowEnd: `span ${this.state.spans}` }}
-				className='image__card'
-			>
-				<img ref={this.imageRef} src={loader} alt='Loader' />
+			<div style={{ gridRowEnd: `span ${this.state.spans}` }} className='image__card'>
+				<img ref={this.imageRef} src={loader} alt='loading' />
 				<a
 					href={this.props.image.links.download}
 					target='_blank'
