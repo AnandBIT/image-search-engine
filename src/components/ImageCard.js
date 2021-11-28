@@ -24,6 +24,7 @@ class ImageCard extends React.Component {
 		// console.log(height);
 
 		// Adding 2 so that there is 2*4 = 8px more space to behave as margin-bottom
+		// 4 is used here as according to each row size specified in css
 		const spans = Math.ceil(height / 4) + 2;
 		this.setState({ spans });
 	};
